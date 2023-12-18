@@ -1,22 +1,23 @@
-import random #thx chatgpt for cleaning up my code
+import random #Fixed code made it better
 
 while True:
-    rps = input("Enter your choice (rock/paper/scissors): ").lower()
+    rps = input("Please select rock, paper, or scissors: ").lower()
     if rps in ["rock", "paper", "scissors"]:
         break
-    else:
-        print("Invalid choice. Please enter rock, paper, or scissors.")
 
-if rps == "rock":
-    print("You have chosen rock")
-elif rps == "paper":
-    print("You have chosen paper")
-elif rps == "scissors":
-    print("You have chosen scissors")
+print("You have chosen " + rps)
 
-def play_computer():
-    choices = ["rock", "paper", "scissors"]
-    computer_choice = random.choice(choices)
-    print("Computer chose:", computer_choice)
+def computer_choice():
+    return random.choice(["rock", "paper", "scissors"])
 
-play_computer()
+computer_pick = computer_choice()
+print("Computer chose " + computer_pick)
+
+if computer_pick == rps:
+    print("You tied")
+elif (rps == "rock" and computer_pick == "scissors") or \
+        (rps == "paper" and computer_pick == "rock") or \
+        (rps == "scissors" and computer_pick == "paper"):
+    print("You win!")
+else:
+    print("You lose!")
